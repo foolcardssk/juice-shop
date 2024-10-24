@@ -16,7 +16,7 @@ function hasDockerEnv () {
 
 function hasDockerCGroup () {
   try {
-    return fs.readFileSync('/proc/self/cgroup', 'utf8').includes('docker')
+    // return fs.readFileSync('/proc/self/cgroup', 'utf8').includes('docker')
   } catch {
     return false
   }

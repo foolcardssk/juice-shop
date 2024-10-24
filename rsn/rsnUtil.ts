@@ -21,7 +21,7 @@ function writeToFile (json: CacheData) {
 }
 
 function getDataFromFile () {
-  const data = fs.readFileSync(cacheFile).toString()
+  // const data = fs.readFileSync(cacheFile).toString()
   return JSON.parse(data)
 }
 
@@ -45,7 +45,7 @@ const checkDiffs = async (keys: string[]) => {
       .then(snippet => {
         if (snippet == null) return
         process.stdout.write(val + ': ')
-        const fileData = fs.readFileSync(fixesPath + '/' + val).toString()
+        // const fileData = fs.readFileSync(fixesPath + '/' + val).toString()
         const diff = Diff.diffLines(filterString(fileData), filterString(snippet.snippet))
         let line = 0
         for (const part of diff) {
@@ -100,7 +100,7 @@ const checkDiffs = async (keys: string[]) => {
 }
 
 async function seePatch (file: string) {
-  const fileData = fs.readFileSync(fixesPath + '/' + file).toString()
+  // const fileData = fs.readFileSync(fixesPath + '/' + file).toString()
   const snippet = await retrieveCodeSnippet(file.split('_')[0])
   if (snippet == null) return
   const patch = Diff.structuredPatch(file, file, filterString(snippet.snippet), filterString(fileData))

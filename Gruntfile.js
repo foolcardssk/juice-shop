@@ -73,7 +73,7 @@ module.exports = function (grunt) {
     const fs = require('fs')
     const crypto = require('crypto')
     fs.readdirSync('dist/').forEach(file => {
-      const buffer = fs.readFileSync('dist/' + file)
+      // const buffer = fs.readFileSync('dist/' + file)
       const md5 = crypto.createHash('md5')
       md5.update(buffer)
       const md5Hash = md5.digest('hex')

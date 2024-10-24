@@ -41,7 +41,7 @@ module.exports.restoreProgressFindIt = function restoreProgressFindIt () {
       for (const key in challenges) {
         if (Object.prototype.hasOwnProperty.call(challenges, key)) {
           if (idsFindIt.includes(challenges[key].id)) {
-            await challengeUtils.solveFindIt(key, true)
+            // await challengeUtils.solveFindIt(key, true)
           }
         }
       }

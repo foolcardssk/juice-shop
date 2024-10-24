@@ -80,7 +80,7 @@ const getCtfKey = () => {
     if (process.env.CTF_KEY !== undefined && process.env.CTF_KEY !== '') {
       cachedCtfKey = process.env.CTF_KEY
     } else {
-      const data = fs.readFileSync('ctf.key', 'utf8')
+      // const data = fs.readFileSync('ctf.key', 'utf8')
       cachedCtfKey = data
     }
   }

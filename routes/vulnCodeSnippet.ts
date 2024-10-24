@@ -91,7 +91,7 @@ exports.checkVulnLines = () => async (req: Request<Record<string, unknown>, Reco
   const verdict = getVerdict(vulnLines, neutralLines, selectedLines)
   let hint
   if (fs.existsSync('./data/static/codefixes/' + key + '.info.yml')) {
-    const codingChallengeInfos = yaml.load(fs.readFileSync('./data/static/codefixes/' + key + '.info.yml', 'utf8'))
+    // const codingChallengeInfos = yaml.load(fs.readFileSync('./data/static/codefixes/' + key + '.info.yml', 'utf8'))
     if (codingChallengeInfos?.hints) {
       if (accuracy.getFindItAttempts(key) > codingChallengeInfos.hints.length) {
         if (vulnLines.length === 1) {
@@ -106,7 +106,7 @@ exports.checkVulnLines = () => async (req: Request<Record<string, unknown>, Reco
     }
   }
   if (verdict) {
-    await challengeUtils.solveFindIt(key)
+    // await challengeUtils.solveFindIt(key)
     res.status(200).json({
       verdict: true
     })

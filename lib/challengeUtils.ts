@@ -96,17 +96,17 @@ export const findChallengeById = (challengeId: number) => {
   logger.warn('Missing challenge with id: ' + challengeId)
 }
 
-export const solveFindIt = async function (key: string, isRestore: boolean) {
-  const solvedChallenge = challenges[key]
-  await ChallengeModel.update({ codingChallengeStatus: 1 }, { where: { key, codingChallengeStatus: { [Op.lt]: 2 } } })
-  logger.info(`${isRestore ? colors.grey('Restored') : colors.green('Solved')} 'Find It' phase of coding challenge ${colors.cyan(solvedChallenge.key)} (${solvedChallenge.name})`)
-  if (!isRestore) {
-    accuracy.storeFindItVerdict(solvedChallenge.key, true)
-    accuracy.calculateFindItAccuracy(solvedChallenge.key)
-    await calculateFindItCheatScore(solvedChallenge)
-    sendCodingChallengeNotification({ key, codingChallengeStatus: 1 })
-  }
-}
+// export const solveFindIt = async function (key: string, isRestore: boolean) {
+//   const solvedChallenge = challenges[key]
+//   await ChallengeModel.update({ codingChallengeStatus: 1 }, { where: { key, codingChallengeStatus: { [Op.lt]: 2 } } })
+//   logger.info(`${isRestore ? colors.grey('Restored') : colors.green('Solved')} 'Find It' phase of coding challenge ${colors.cyan(solvedChallenge.key)} (${solvedChallenge.name})`)
+//   if (!isRestore) {
+//     accuracy.storeFindItVerdict(solvedChallenge.key, true)
+//     accuracy.calculateFindItAccuracy(solvedChallenge.key)
+//     await calculateFindItCheatScore(solvedChallenge)
+//     sendCodingChallengeNotification({ key, codingChallengeStatus: 1 })
+//   }
+// }
 
 export const solveFixIt = async function (key: string, isRestore: boolean) {
   const solvedChallenge = challenges[key]
